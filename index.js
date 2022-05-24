@@ -9,7 +9,19 @@ const context = new AudioContext()
 const osc = context.createOscillator()
 const amp = context.createGain()
 
-const selectKey = 0
+let selectKey = 0
+
+const keyList = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
+  'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5', 'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5'
+]
+
+// const majorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
+//   keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
+// ]
+const majorScale = [keyList[0], keyList[2], keyList[4],
+  keyList[5], keyList[7], keyList[9], keyList[11]
+]
+
 let scaleName
 
 function choiceKey () {
@@ -20,10 +32,55 @@ function choiceKey () {
     return prompt
 }
 
+function changeKey (selectKey) {
+  const changedKeyMajorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
+    keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
+  ]
+  console.log(changedKeyMajorScale)
+  return changedKeyMajorScale
+}
+
 async function displayKey () {
   try {
     const answer = await choiceKey().run()
-    console.log(answer)
+    switch (answer) {
+      case 'C#':
+        selectKey = 1
+        break
+      case 'D':
+        selectKey = 2
+        break
+      case 'D#':
+        selectKey = 3
+        break
+      case 'E':
+        selectKey = 4
+        break
+      case 'F':
+        selectKey = 5
+        break
+      case 'F#':
+        selectKey = 6
+        break
+      case 'G':
+        selectKey = 7
+        break
+      case 'G#':
+        selectKey = 8
+        break
+      case 'A':
+        selectKey = 9
+        break
+      case 'A#':
+        selectKey = 10
+        break
+      case 'B':
+        selectKey = 11
+        break
+      default:
+        break
+    }
+    changeKey(selectKey)
   } catch (e) {
     console.error(e)
   }
@@ -36,14 +93,6 @@ const toneList2 = [{'C4': 261.626}, {'C#4': 277.183}, {'D4': 293.665}, {'D#4': 3
   {'D5': 587.33}, {'D#5': 622.254}, {'E5': 659.255}, {'F5': 698.456}, {'F#5': 739.989},
   {'G5': 783.991}, {'G#5': 830.609}, {'A5': 880}, {'A#5': 932.328}, {'B5': 987.767
 }]
-
-const keyList = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
-  'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5', 'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5'
-]
-
-const majorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
-]
 
 const naturalMinorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 3],
   keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 8], keyList[selectKey + 10]
