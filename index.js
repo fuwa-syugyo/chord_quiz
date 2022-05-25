@@ -36,7 +36,9 @@ function changeKey (selectKey) {
   const changedKeyMajorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
     keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
   ]
-  console.log(changedKeyMajorScale)
+  const scaleGetRidOfInterval = []
+  changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
+  console.log(scaleGetRidOfInterval.join(','))
   return changedKeyMajorScale
 }
 
