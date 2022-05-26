@@ -16,15 +16,6 @@ const keyList = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4',
   'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5', 'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5'
 ]
 
-// const majorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
-//   keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
-// ]
-const majorScale = [keyList[0], keyList[2], keyList[4],
-  keyList[5], keyList[7], keyList[9], keyList[11]
-]
-
-let scaleName
-
 function questionKey () {
   const prompt = new Select( {
     message: 'キーを選択してください',
@@ -37,9 +28,6 @@ function changeKey (selectKey) {
   const changedKeyMajorScale = [keyList[selectKey], keyList[selectKey + 2], keyList[selectKey + 4],
     keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
   ]
-  // const scaleGetRidOfInterval = []
-  // changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
-  // console.log(scaleGetRidOfInterval.join(','))
   return changedKeyMajorScale
 }
 
