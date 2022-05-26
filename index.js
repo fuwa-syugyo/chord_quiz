@@ -30,16 +30,16 @@ function questionKey () {
     message: 'キーを選択してください',
     choices: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
   })
-    return prompt
+  return prompt
 }
 
 function changeKey (selectKey) {
-  let changedKeyMajorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
+  const changedKeyMajorScale = [keyList[selectKey], keyList[selectKey + 2], keyList[selectKey + 4],
     keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
   ]
-  const scaleGetRidOfInterval = []
-  changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
-  console.log(scaleGetRidOfInterval.join(','))
+  // const scaleGetRidOfInterval = []
+  // changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
+  // console.log(scaleGetRidOfInterval.join(','))
   return changedKeyMajorScale
 }
 
@@ -88,7 +88,6 @@ async function choiceKey () {
     console.error(e)
   }
 }
-//choiceKey()
 
 function questionScale () {
   const prompt = new Select({
@@ -102,37 +101,51 @@ async function choiceScale () {
   try {
     await choiceKey()
     const answer = await questionScale().run()
+    const changedKeyMajorScale = changeKey(selectKey)
     switch (answer) {
       case 'メジャースケール':
-        selectKey = 1
         break
       case 'マイナースケール':
-        console.log(changeKey(selectKey).at(2))
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyMajorScale[5] = keyList[selectKey + 8]
+        changedKeyMajorScale[6] = keyList[selectKey + 10]
         break
       case 'ハーモニックマイナースケール':
-        selectKey = 3
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyMajorScale[5] = keyList[selectKey + 8]
         break
       case 'メロディックマイナースケール':
-        selectKey = 4
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
         break
       case 'ドリアンスケール':
-        selectKey = 5
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyMajorScale[6] = keyList[selectKey + 10]
         break
       case 'フリジアンスケール':
-        selectKey = 6
+        changedKeyMajorScale[1] = keyList[selectKey + 1]
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyMajorScale[5] = keyList[selectKey + 8]
+        changedKeyMajorScale[6] = keyList[selectKey + 10]
         break
       case 'リディアンスケール':
-        selectKey = 7
+        changedKeyMajorScale[3] = keyList[selectKey + 6]
         break
       case 'ミクソリディアンスケール':
-        selectKey = 8
+        changedKeyMajorScale[6] = keyList[selectKey + 10]
         break
       case 'ロクロリアンスケール':
-        selectKey = 9
+        changedKeyMajorScale[1] = keyList[selectKey + 1]
+        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyMajorScale[4] = keyList[selectKey + 6]
+        changedKeyMajorScale[5] = keyList[selectKey + 8]
+        changedKeyMajorScale[6] = keyList[selectKey + 10]
         break
       default:
         break
     }
+    const scaleGetRidOfInterval = []
+    changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
+    console.log(scaleGetRidOfInterval.join(','))
   } catch (e) {
     console.error(e)
   }
@@ -145,38 +158,6 @@ const toneList2 = [{'C4': 261.626}, {'C#4': 277.183}, {'D4': 293.665}, {'D#4': 3
   {'D5': 587.33}, {'D#5': 622.254}, {'E5': 659.255}, {'F5': 698.456}, {'F#5': 739.989},
   {'G5': 783.991}, {'G#5': 830.609}, {'A5': 880}, {'A#5': 932.328}, {'B5': 987.767
 }]
-
-const naturalMinorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 8], keyList[selectKey + 10]
-]
-
-const harmonicMinorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 8], keyList[selectKey + 11]
-]
-
-const melodicMinorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
-]
-
-const dorianScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 10]
-]
-
-const phrygianScale = [keyList[selectKey + 0], keyList[selectKey + 1], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 8], keyList[selectKey + 10]
-]
-
-const lydianScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
-  keyList[selectKey + 6], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
-]
-
-const mixolydianScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
-  keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 10]
-]
-
-const locrianScale = [keyList[selectKey + 0], keyList[selectKey + 1], keyList[selectKey + 3],
-  keyList[selectKey + 5], keyList[selectKey + 6], keyList[selectKey + 8], keyList[selectKey + 10]
-]
 
 // switch(prompt) {
 //   case 0:
