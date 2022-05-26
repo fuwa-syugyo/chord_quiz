@@ -3,6 +3,7 @@
 
 const Speaker = require('speaker')
 const { Select } = require('enquirer')
+const Enquirer = require('enquirer')
 const AudioContext = require('web-audio-engine').StreamAudioContext
 const context = new AudioContext()
 
@@ -24,7 +25,7 @@ const majorScale = [keyList[0], keyList[2], keyList[4],
 
 let scaleName
 
-function choiceKey () {
+function questionKey () {
   const prompt = new Select( {
     message: 'キーを選択してください',
     choices: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
@@ -33,7 +34,7 @@ function choiceKey () {
 }
 
 function changeKey (selectKey) {
-  const changedKeyMajorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
+  let changedKeyMajorScale = [keyList[selectKey + 0], keyList[selectKey + 2], keyList[selectKey + 4],
     keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
   ]
   const scaleGetRidOfInterval = []
@@ -42,9 +43,9 @@ function changeKey (selectKey) {
   return changedKeyMajorScale
 }
 
-async function displayKey () {
+async function choiceKey () {
   try {
-    const answer = await choiceKey().run()
+    const answer = await questionKey().run()
     switch (answer) {
       case 'C#':
         selectKey = 1
@@ -87,7 +88,56 @@ async function displayKey () {
     console.error(e)
   }
 }
-displayKey()
+//choiceKey()
+
+function questionScale () {
+  const prompt = new Select({
+    message: 'スケールを選択してください',
+    choices: ['メジャースケール', 'マイナースケール', 'ハーモニックマイナースケール', 'メロディックマイナースケール', 'ドリアンスケール', 'フリジアンスケール', 'リディアンスケール', 'ミクソリディアンスケール', 'ロクロリアンスケール']
+  })
+  return prompt
+}
+
+async function choiceScale () {
+  try {
+    await choiceKey()
+    const answer = await questionScale().run()
+    switch (answer) {
+      case 'メジャースケール':
+        selectKey = 1
+        break
+      case 'マイナースケール':
+        console.log(changeKey(selectKey).at(2))
+        break
+      case 'ハーモニックマイナースケール':
+        selectKey = 3
+        break
+      case 'メロディックマイナースケール':
+        selectKey = 4
+        break
+      case 'ドリアンスケール':
+        selectKey = 5
+        break
+      case 'フリジアンスケール':
+        selectKey = 6
+        break
+      case 'リディアンスケール':
+        selectKey = 7
+        break
+      case 'ミクソリディアンスケール':
+        selectKey = 8
+        break
+      case 'ロクロリアンスケール':
+        selectKey = 9
+        break
+      default:
+        break
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+choiceScale()
 
 const toneList2 = [{'C4': 261.626}, {'C#4': 277.183}, {'D4': 293.665}, {'D#4': 311.127},
   {'E4': 329.628}, {'F4': 349.228}, {'F#4': 369.994}, {'G4': 391.995}, {'G#4': 415.305},
