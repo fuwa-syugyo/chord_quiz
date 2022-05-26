@@ -89,51 +89,52 @@ async function choiceScale () {
   try {
     await choiceKey()
     const answer = await questionScale().run()
-    const changedKeyMajorScale = changeKey(selectKey)
+    const changedKeyScale = changeKey(selectKey)
     switch (answer) {
       case 'メジャースケール':
         break
       case 'マイナースケール':
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
-        changedKeyMajorScale[5] = keyList[selectKey + 8]
-        changedKeyMajorScale[6] = keyList[selectKey + 10]
+        changedKeyScale[2] = keyList[selectKey + 3]
+        changedKeyScale[5] = keyList[selectKey + 8]
+        changedKeyScale[6] = keyList[selectKey + 10]
         break
       case 'ハーモニックマイナースケール':
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
-        changedKeyMajorScale[5] = keyList[selectKey + 8]
+        changedKeyScale[2] = keyList[selectKey + 3]
+        changedKeyScale[5] = keyList[selectKey + 8]
         break
       case 'メロディックマイナースケール':
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
+        changedKeyScale[2] = keyList[selectKey + 3]
         break
       case 'ドリアンスケール':
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
-        changedKeyMajorScale[6] = keyList[selectKey + 10]
+        changedKeyScale[2] = keyList[selectKey + 3]
+        changedKeyScale[6] = keyList[selectKey + 10]
         break
       case 'フリジアンスケール':
-        changedKeyMajorScale[1] = keyList[selectKey + 1]
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
-        changedKeyMajorScale[5] = keyList[selectKey + 8]
-        changedKeyMajorScale[6] = keyList[selectKey + 10]
+        changedKeyScale[1] = keyList[selectKey + 1]
+        changedKeyScale[2] = keyList[selectKey + 3]
+        changedKeyScale[5] = keyList[selectKey + 8]
+        changedKeyScale[6] = keyList[selectKey + 10]
         break
       case 'リディアンスケール':
-        changedKeyMajorScale[3] = keyList[selectKey + 6]
+        changedKeyScale[3] = keyList[selectKey + 6]
         break
       case 'ミクソリディアンスケール':
-        changedKeyMajorScale[6] = keyList[selectKey + 10]
+        changedKeyScale[6] = keyList[selectKey + 10]
         break
       case 'ロクロリアンスケール':
-        changedKeyMajorScale[1] = keyList[selectKey + 1]
-        changedKeyMajorScale[2] = keyList[selectKey + 3]
-        changedKeyMajorScale[4] = keyList[selectKey + 6]
-        changedKeyMajorScale[5] = keyList[selectKey + 8]
-        changedKeyMajorScale[6] = keyList[selectKey + 10]
+        changedKeyScale[1] = keyList[selectKey + 1]
+        changedKeyScale[2] = keyList[selectKey + 3]
+        changedKeyScale[4] = keyList[selectKey + 6]
+        changedKeyScale[5] = keyList[selectKey + 8]
+        changedKeyScale[6] = keyList[selectKey + 10]
         break
       default:
         break
     }
     const scaleGetRidOfInterval = []
-    changedKeyMajorScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
+    changedKeyScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
     console.log(scaleGetRidOfInterval.join(','))
+    console.log(changedKeyScale)
   } catch (e) {
     console.error(e)
   }
