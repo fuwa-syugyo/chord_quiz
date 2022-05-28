@@ -138,18 +138,18 @@ choiceScale()
 
 async function soundPlay () {
   const toneList2 = [
-    {name: 'C4', frequency: 261.626}, {name: 'C♯4', frequency: 277.183 },
-    {name: 'D4', frequency: 293.665}, {name: 'D♯4', frequency: 311.127 },
-    {name: 'E4', frequency: 329.628}, {name: 'F4', frequency: 349.228 },
-    {name: 'F♯4', frequency: 369.994}, {name: 'G4', frequency: 391.995 },
-    {name: 'G♯4', frequency: 415.305}, {name: 'A4', frequency: 440 },
-    {name: 'A♯4', frequency: 466.164}, {name: 'B4', frequency: 493.883 },
-    {name: 'C5', frequency: 523.251}, {name: 'C♯5', frequency: 554.365 },
-    {name: 'D5', frequency: 587.33}, {name: 'D♯5', frequency: 622.254 },
-    {name: 'E5', frequency: 659.255}, {name: 'F5', frequency: 698.456 },
-    {name: 'F♯5', frequency: 739.989}, {name: 'G5', frequency: 783.991 },
-    {name: 'G♯5', frequency: 830.609}, {name: 'A5', frequency: 880 },
-    {name: 'A♯5', frequency: 932.328}, {name: 'B5', frequency: 987.767 }]
+    { name: 'C4', frequency: 261.626 }, { name: 'C♯4', frequency: 277.183 },
+    { name: 'D4', frequency: 293.665 }, { name: 'D♯4', frequency: 311.127 },
+    { name: 'E4', frequency: 329.628 }, { name: 'F4', frequency: 349.228 },
+    { name: 'F♯4', frequency: 369.994 }, { name: 'G4', frequency: 391.995 },
+    { name: 'G♯4', frequency: 415.305 }, { name: 'A4', frequency: 440 },
+    { name: 'A♯4', frequency: 466.164 }, { name: 'B4', frequency: 493.883 },
+    { name: 'C5', frequency: 523.251 }, { name: 'C♯5', frequency: 554.365 },
+    { name: 'D5', frequency: 587.33 }, { name: 'D♯5', frequency: 622.254 },
+    { name: 'E5', frequency: 659.255 }, { name: 'F5', frequency: 698.456 },
+    { name: 'F♯5', frequency: 739.989 }, { name: 'G5', frequency: 783.991 },
+    { name: 'G♯5', frequency: 830.609 }, { name: 'A5', frequency: 880 },
+    { name: 'A♯5', frequency: 932.328 }, { name: 'B5', frequency: 987.767 }]
 
   const changedKeyScale = await choiceScale()
   const scaleGetRidOfInterval = []
