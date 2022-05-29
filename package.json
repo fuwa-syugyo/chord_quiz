@@ -1,0 +1,29 @@
+{
+  "name": "music-scale-and-sound",
+  "version": "1.0.0",
+  "description": "Create music scale and sound",
+  "main": "index.js",
+  "bin": {
+    "music-scale-and-sound": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuwa-syugyo/music_scale_and_sound"
+  },
+  "keywords": [
+    "music",
+    "scale",
+    "theory",
+    "sound"
+  ],
+  "author": "fuwa",
+  "license": "ISC",
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "speaker": "^0.5.4",
+    "web-audio-engine": "^0.13.4"
+  }
+}
