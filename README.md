@@ -1,4 +1,4 @@
-# music_scale_and_sound
+# music-scale-and-play-sound
 Create music scale und sound for Japan.
 
 ## install
