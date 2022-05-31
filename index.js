@@ -2,6 +2,8 @@
 
 const { Select } = require('enquirer')
 const player = require('node-wav-player')
+const userHome = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+const wavPath = userHome +  '/node_modules/music-scale-and-play-sound/sounds/'
 
 let selectKey = 0
 
@@ -141,7 +143,7 @@ async function soundPlay () {
   const wavList = []
 
   for (let i = 0; i < changedKeyScale.length; i++) {
-    wavList.push('./sounds/' + changedKeyScale[i] + '.wav')
+    wavList.push(wavPath + changedKeyScale[i] + '.wav')
     await player.play({
       path: wavList[i],
       sync: true
