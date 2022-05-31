@@ -2,7 +2,8 @@
 
 const { Select } = require('enquirer')
 const player = require('node-wav-player')
-const path = require('path')
+const path = require('path').join
+const filePath = path(__dirname, './sounds/')
 
 let selectKey = 0
 
@@ -142,7 +143,7 @@ async function soundPlay () {
   const wavList = []
 
   for (let i = 0; i < changedKeyScale.length; i++) {
-    wavList.push(path + '/sounds/' + changedKeyScale[i] + '.wav')
+    wavList.push(filePath + changedKeyScale[i] + '.wav')
     await player.play({
       path: wavList[i],
       sync: true
