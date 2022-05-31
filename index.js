@@ -144,14 +144,13 @@ async function soundPlay () {
 
   for (let i = 0; i < changedKeyScale.length; i++) {
     wavList.push(filePath + changedKeyScale[i] + '.wav')
-    console.log(filePath + changedKeyScale[i] + '.wav')
-    // await player.play({
-    //   path: wavList[i],
-    //   sync: true
-    // }).then(() => {
-    // }).catch((error) => {
-    //   console.error(error)
-    // })
+    await player.play({
+      path: wavList[i],
+      sync: true
+    }).then(() => {
+    }).catch((error) => {
+      console.error(error)
+    })
   }
 }
 soundPlay()
