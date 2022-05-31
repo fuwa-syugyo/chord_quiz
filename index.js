@@ -1,30 +1,15 @@
 #!/usr/bin/env node
 
-const Speaker = require('speaker')
 const { Select } = require('enquirer')
-const AudioContext = require('web-audio-engine').StreamAudioContext
-const context = new AudioContext()
-
-const osc = context.createOscillator()
-const amp = context.createGain()
+const player = require('node-wav-player')
 
 let selectKey = 0
 
-const toneInformation = [
-  { name: 'C4', frequency: 261.626 }, { name: 'C♯4', frequency: 277.183 },
-  { name: 'D4', frequency: 293.665 }, { name: 'D♯4', frequency: 311.127 },
-  { name: 'E4', frequency: 329.628 }, { name: 'F4', frequency: 349.228 },
-  { name: 'F♯4', frequency: 369.994 }, { name: 'G4', frequency: 391.995 },
-  { name: 'G♯4', frequency: 415.305 }, { name: 'A4', frequency: 440 },
-  { name: 'A♯4', frequency: 466.164 }, { name: 'B4', frequency: 493.883 },
-  { name: 'C5', frequency: 523.251 }, { name: 'C♯5', frequency: 554.365 },
-  { name: 'D5', frequency: 587.33 }, { name: 'D♯5', frequency: 622.254 },
-  { name: 'E5', frequency: 659.255 }, { name: 'F5', frequency: 698.456 },
-  { name: 'F♯5', frequency: 739.989 }, { name: 'G5', frequency: 783.991 },
-  { name: 'G♯5', frequency: 830.609 }, { name: 'A5', frequency: 880 },
-  { name: 'A♯5', frequency: 932.328 }, { name: 'B5', frequency: 987.767 }]
-
-const keyList = toneInformation.map(item => item.name)
+const keyList =
+  ['C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4','F♯4', 'G4',
+   'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5',
+   'E5', 'F5', 'F♯5', 'G5', 'G♯5', 'A5', 'A♯5', 'B5'
+  ]
 
 function questionKey () {
   const prompt = new Select({
@@ -153,23 +138,17 @@ async function soundPlay () {
   const scaleGetRidOfInterval = []
   changedKeyScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
   console.log(scaleGetRidOfInterval.join(','))
-  osc.type = 'square'
-  for (let i = 0; i < changedKeyScale.length; i++) {
-    osc.frequency.setValueAtTime(toneInformation.find((item) => item.name === changedKeyScale[i]).frequency, i * 0.5)
-  }
-  osc.start(0)
-  osc.stop(4)
-  osc.connect(amp)
-  osc.onended = () => {
-    context.close().then(() => {
-      process.exit(0)
+  const wavList = []
+
+  for(i = 0; i < changedKeyScale.length; i++){
+    wavList.push('./sounds/' + changedKeyScale[i] + '.wav')
+    await player.play({
+      path: wavList[i],
+      sync: true
+    }).then(() => {
+    }).catch((error) => {
+      console.error(error)
     })
   }
-
-  amp.gain.setValueAtTime(0.01, 0)
-  amp.connect(context.destination)
-
-  context.pipe(new Speaker())
-  context.resume()
 }
 soundPlay()

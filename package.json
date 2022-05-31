@@ -24,7 +24,6 @@
   "dependencies": {
     "enquirer": "^2.3.6",
     "music-scale-and-sound": "^1.0.0",
-    "speaker": "^0.5.4",
-    "web-audio-engine": "^0.13.4"
+    "node-wav-player": "^0.2.0"
   }
 }
