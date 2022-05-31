@@ -1,7 +1,7 @@
 {
-  "name": "music-scale-and-sound",
+  "name": "music-scale-and-play-sound",
   "version": "1.0.0",
-  "description": "Create music scale and sound",
+  "description": "Create music scale and play sound",
   "main": "index.js",
   "bin": {
     "music-scale-and-sound": "./index.js"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fuwa-syugyo/music-scale-and-sound"
+    "url": "https://github.com/fuwa-syugyo/music-scale-and-play-sound"
   },
   "keywords": [
     "music",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "enquirer": "^2.3.6",
-    "music-scale-and-sound": "^1.0.0",
+    "music-scale-and-play-sound": "^1.0.0",
     "node-wav-player": "^0.2.0"
   }
 }
