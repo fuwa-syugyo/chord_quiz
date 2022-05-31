@@ -2,7 +2,7 @@
 Create music scale und sound for Japan.
 
 ## install
-`npm i music-scale-and-sound`
+`npm i music-scale-and-play-sound`
 
 ## Usage
 
