@@ -6,9 +6,9 @@ const player = require('node-wav-player')
 let selectKey = 0
 
 const keyList =
-  ['C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4','F♯4', 'G4',
-   'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5',
-   'E5', 'F5', 'F♯5', 'G5', 'G♯5', 'A5', 'A♯5', 'B5'
+  ['C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4', 'F♯4', 'G4',
+    'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5',
+    'E5', 'F5', 'F♯5', 'G5', 'G♯5', 'A5', 'A♯5', 'B5'
   ]
 
 function questionKey () {
@@ -140,7 +140,7 @@ async function soundPlay () {
   console.log(scaleGetRidOfInterval.join(','))
   const wavList = []
 
-  for(i = 0; i < changedKeyScale.length; i++){
+  for (let i = 0; i < changedKeyScale.length; i++) {
     wavList.push('./sounds/' + changedKeyScale[i] + '.wav')
     await player.play({
       path: wavList[i],

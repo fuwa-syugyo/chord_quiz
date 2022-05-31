@@ -21,6 +21,14 @@
   ],
   "author": "fuwa",
   "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0"
+  },
   "dependencies": {
     "enquirer": "^2.3.6",
     "music-scale-and-sound": "^1.0.0",
