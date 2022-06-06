@@ -1,6 +1,6 @@
 {
   "name": "music-scale-and-play-sound",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Create music scale and play sound",
   "main": "index.js",
   "bin": {
