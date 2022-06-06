@@ -29,49 +29,45 @@ function changeKey (selectKey) {
 }
 
 async function choiceKey () {
-  try {
-    const answer = await questionKey().run()
-    switch (answer) {
-      case 'C♯':
-        selectKey = 1
-        break
-      case 'D':
-        selectKey = 2
-        break
-      case 'D♯':
-        selectKey = 3
-        break
-      case 'E':
-        selectKey = 4
-        break
-      case 'F':
-        selectKey = 5
-        break
-      case 'F♯':
-        selectKey = 6
-        break
-      case 'G':
-        selectKey = 7
-        break
-      case 'G♯':
-        selectKey = 8
-        break
-      case 'A':
-        selectKey = 9
-        break
-      case 'A♯':
-        selectKey = 10
-        break
-      case 'B':
-        selectKey = 11
-        break
-      default:
-        break
-    }
-    changeKey(selectKey)
-  } catch (e) {
-    console.error(e)
+  const answer = await questionKey().run().catch(error => console.error(error))
+  switch (answer) {
+    case 'C♯':
+      selectKey = 1
+      break
+    case 'D':
+      selectKey = 2
+      break
+    case 'D♯':
+      selectKey = 3
+      break
+    case 'E':
+      selectKey = 4
+      break
+    case 'F':
+      selectKey = 5
+      break
+    case 'F♯':
+      selectKey = 6
+      break
+    case 'G':
+      selectKey = 7
+      break
+    case 'G♯':
+      selectKey = 8
+      break
+    case 'A':
+      selectKey = 9
+      break
+    case 'A♯':
+      selectKey = 10
+      break
+    case 'B':
+      selectKey = 11
+      break
+    default:
+      break
   }
+  changeKey(selectKey)
 }
 
 function questionScale () {
@@ -83,55 +79,51 @@ function questionScale () {
 }
 
 async function choiceScale () {
-  try {
-    await choiceKey()
-    const answer = await questionScale().run()
-    const changedKeyScale = changeKey(selectKey)
-    switch (answer) {
-      case 'メジャースケール':
-        break
-      case 'マイナースケール':
-        changedKeyScale[2] = keyList[selectKey + 3]
-        changedKeyScale[5] = keyList[selectKey + 8]
-        changedKeyScale[6] = keyList[selectKey + 10]
-        break
-      case 'ハーモニックマイナースケール':
-        changedKeyScale[2] = keyList[selectKey + 3]
-        changedKeyScale[5] = keyList[selectKey + 8]
-        break
-      case 'メロディックマイナースケール':
-        changedKeyScale[2] = keyList[selectKey + 3]
-        break
-      case 'ドリアンスケール':
-        changedKeyScale[2] = keyList[selectKey + 3]
-        changedKeyScale[6] = keyList[selectKey + 10]
-        break
-      case 'フリジアンスケール':
-        changedKeyScale[1] = keyList[selectKey + 1]
-        changedKeyScale[2] = keyList[selectKey + 3]
-        changedKeyScale[5] = keyList[selectKey + 8]
-        changedKeyScale[6] = keyList[selectKey + 10]
-        break
-      case 'リディアンスケール':
-        changedKeyScale[3] = keyList[selectKey + 6]
-        break
-      case 'ミクソリディアンスケール':
-        changedKeyScale[6] = keyList[selectKey + 10]
-        break
-      case 'ロクロリアンスケール':
-        changedKeyScale[1] = keyList[selectKey + 1]
-        changedKeyScale[2] = keyList[selectKey + 3]
-        changedKeyScale[4] = keyList[selectKey + 6]
-        changedKeyScale[5] = keyList[selectKey + 8]
-        changedKeyScale[6] = keyList[selectKey + 10]
-        break
-      default:
-        break
-    }
-    return changedKeyScale
-  } catch (e) {
-    console.error(e)
+  await choiceKey()
+  const answer = await questionScale().run().catch(error => console.error(error))
+  const changedKeyScale = changeKey(selectKey)
+  switch (answer) {
+    case 'メジャースケール':
+      break
+    case 'マイナースケール':
+      changedKeyScale[2] = keyList[selectKey + 3]
+      changedKeyScale[5] = keyList[selectKey + 8]
+      changedKeyScale[6] = keyList[selectKey + 10]
+      break
+    case 'ハーモニックマイナースケール':
+      changedKeyScale[2] = keyList[selectKey + 3]
+      changedKeyScale[5] = keyList[selectKey + 8]
+      break
+    case 'メロディックマイナースケール':
+      changedKeyScale[2] = keyList[selectKey + 3]
+      break
+    case 'ドリアンスケール':
+      changedKeyScale[2] = keyList[selectKey + 3]
+      changedKeyScale[6] = keyList[selectKey + 10]
+      break
+    case 'フリジアンスケール':
+      changedKeyScale[1] = keyList[selectKey + 1]
+      changedKeyScale[2] = keyList[selectKey + 3]
+      changedKeyScale[5] = keyList[selectKey + 8]
+      changedKeyScale[6] = keyList[selectKey + 10]
+      break
+    case 'リディアンスケール':
+      changedKeyScale[3] = keyList[selectKey + 6]
+      break
+    case 'ミクソリディアンスケール':
+      changedKeyScale[6] = keyList[selectKey + 10]
+      break
+    case 'ロクロリアンスケール':
+      changedKeyScale[1] = keyList[selectKey + 1]
+      changedKeyScale[2] = keyList[selectKey + 3]
+      changedKeyScale[4] = keyList[selectKey + 6]
+      changedKeyScale[5] = keyList[selectKey + 8]
+      changedKeyScale[6] = keyList[selectKey + 10]
+      break
+    default:
+      break
   }
+  return changedKeyScale
 }
 choiceScale()
 
