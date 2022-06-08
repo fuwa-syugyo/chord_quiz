@@ -30,43 +30,7 @@ function changeKey (selectKey) {
 
 async function choiceKey () {
   const answer = await questionKey().run().catch(error => console.error(error))
-  switch (answer) {
-    case 'C♯':
-      selectKey = 1
-      break
-    case 'D':
-      selectKey = 2
-      break
-    case 'D♯':
-      selectKey = 3
-      break
-    case 'E':
-      selectKey = 4
-      break
-    case 'F':
-      selectKey = 5
-      break
-    case 'F♯':
-      selectKey = 6
-      break
-    case 'G':
-      selectKey = 7
-      break
-    case 'G♯':
-      selectKey = 8
-      break
-    case 'A':
-      selectKey = 9
-      break
-    case 'A♯':
-      selectKey = 10
-      break
-    case 'B':
-      selectKey = 11
-      break
-    default:
-      break
-  }
+  selectKey = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'].indexOf(answer)
   changeKey(selectKey)
 }
 
