@@ -5,8 +5,6 @@ const player = require('node-wav-player')
 const path = require('path')
 const filePath = path.join(__dirname, './Sounds/')
 
-let selectKey = 0
-
 const keyList =
   ['C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4', 'F♯4', 'G4',
     'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5',
@@ -30,8 +28,7 @@ function changeKey (selectKey) {
 
 async function choiceKey () {
   const answer = await questionKey().run().catch(error => console.error(error))
-  selectKey = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'].indexOf(answer)
-  changeKey(selectKey)
+  return ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'].indexOf(answer)
 }
 
 function questionScale () {
@@ -43,7 +40,7 @@ function questionScale () {
 }
 
 async function choiceScale () {
-  await choiceKey()
+  const selectKey = await choiceKey()
   const answer = await questionScale().run().catch(error => console.error(error))
   const changedKeyScale = changeKey(selectKey)
   switch (answer) {
