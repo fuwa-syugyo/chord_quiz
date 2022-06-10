@@ -11,7 +11,7 @@ const keyList =
     'E5', 'F5', 'F♯5', 'G5', 'G♯5', 'A5', 'A♯5', 'B5'
   ]
 
-function questionKey () {
+const questionKey = () => {
   const prompt = new Select({
     message: 'キーを選択してください',
     choices: ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B']
@@ -19,7 +19,7 @@ function questionKey () {
   return prompt
 }
 
-function changeKey (selectKey) {
+const changeKey = (selectKey) => {
   const changedKeyMajorScale = [keyList[selectKey], keyList[selectKey + 2], keyList[selectKey + 4],
     keyList[selectKey + 5], keyList[selectKey + 7], keyList[selectKey + 9], keyList[selectKey + 11]
   ]
@@ -31,7 +31,7 @@ async function choiceKey () {
   return ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'].indexOf(answer)
 }
 
-function questionScale () {
+const questionScale = () => {
   const prompt = new Select({
     message: 'スケールを選択してください',
     choices: ['メジャースケール', 'マイナースケール', 'ハーモニックマイナースケール', 'メロディックマイナースケール', 'ドリアンスケール', 'フリジアンスケール', 'リディアンスケール', 'ミクソリディアンスケール', 'ロクロリアンスケール']
