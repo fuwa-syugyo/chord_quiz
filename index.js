@@ -26,7 +26,7 @@ const changeKey = (selectKey) => {
   return changedKeyMajorScale
 }
 
-async function choiceKey () {
+const choiceKey = async () => {
   const answer = await questionKey().run().catch(error => console.error(error))
   return ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'].indexOf(answer)
 }
@@ -39,7 +39,7 @@ const questionScale = () => {
   return prompt
 }
 
-async function choiceScale () {
+const choiceScale = async () => {
   const selectKey = await choiceKey()
   const answer = await questionScale().run().catch(error => console.error(error))
   const changedKeyScale = changeKey(selectKey)
@@ -88,7 +88,7 @@ async function choiceScale () {
 }
 choiceScale()
 
-async function soundPlay () {
+const soundPlay = async () => {
   const changedKeyScale = await choiceScale()
   const scaleGetRidOfInterval = []
   changedKeyScale.forEach(e => scaleGetRidOfInterval.push(e.slice(0, -1)))
